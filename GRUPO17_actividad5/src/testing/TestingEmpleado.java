@@ -17,7 +17,7 @@ public class TestingEmpleado {
 										   ("DIRECCION", "MÁXIMA RESPONSABILIDAD DEPARTAMENTO", 
 										   50000, 80000);
 		Empleado emp1 = new Empleado 
-												   (14628069, "JULIÁN", "MÉNDEZ PODADERA", 'H', 
+												   (6, "JULIÁN", "MÉNDEZ PODADERA", 'H', 
 						                           "JMENDEZPOD@GMAIL.COM", 60000, 10000, tra1, dep1);
 		
 		/*
