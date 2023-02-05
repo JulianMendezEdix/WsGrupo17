@@ -1,3 +1,29 @@
+/*
+ ***********************************************************************************************
+ * 														INFO
+ ***********************************************************************************************
+ *
+ * AD-5. Tarea en equipo. Interrelación entre clases.
+ * Programación 1ºDAW EDIX 2023
+ * GRUPO 17
+ * Autores: Julián Méndez Podadera.
+ * 
+ ***********************************************************************************************
+ * 
+ * Descripcion:
+ * Esta es la clase TestingEmpleado requerida
+ * 
+ * *********************************************************************************************
+ * 
+ * NOTAS: 
+ * los demás compañeros del grupo no han aparecido tras intentos continuados 
+ * de contacto vía mensaje en el campus de EDIX. Aporto capturas de pantalla en carpeta
+ * "Documentación".
+ * 
+ ***********************************************************************************************
+ ********************************************************************************************** 
+ */
+
 package testing;
 
 import modelo.javabean.*;
@@ -5,6 +31,26 @@ import modelo.javabean.*;
 public class TestingEmpleado {
 	
 	public static void main(String[] args) {
+		/*
+		 ******************************************************************************************
+		 ******************************************************************************************
+		 *  								    CABECERA INFORMACIÓN
+		 ******************************************************************************************
+		 ******************************************************************************************  
+		 */
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("**INICIO DEL PROGRAMA");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println(" * AD-5. Tarea en equipo. Interrelación entre clases.\r\n"
+				+ " * Programación 1ºDAW EDIX 2023\r\n"
+				+ " * GRUPO 17\r\n"
+				+ " * Autores: Julián Méndez Podadera.");
+		System.out.println(" * Descripcion:\r\n"
+				+ " * Esta es la clase TestingEmpleado requerida.");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("");
 		
 		/*
 		 * Crear al menos, un objeto Localización, otro de Departamento con esa
@@ -25,6 +71,11 @@ public class TestingEmpleado {
 		 * Nombre, apellidos, género, nombre del departamento, 
 		 * nombre de su trabajo, dirección , ciudad y país.
 		 */
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Esta es la información completa de un empleado "
+				+ "SIN usar toString:");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("");
 		
 		System.out.println("Nombre: " + emp1.getNombre());
 		System.out.println("Apellidos: " + emp1.getApellidos());
@@ -41,6 +92,25 @@ public class TestingEmpleado {
 		 * Extraer del empleado su trabajo y su departamento en variables de su tipo. 
 		 * Y pintarlas con syso.
 		 */
+		System.out.println("");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Extraer del empleado su trabajo y departamento en variables\n"
+				+ "de su tipo y pintarlas con syso:");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("");
+		
+		Trabajo trabajoEmp1 = emp1.getTrabajo();
+		System.out.println(trabajoEmp1);
+		
+		Departamento departamento = new Departamento();
+		departamento = emp1.getDepartamento();
+		System.out.println(departamento);
+		
+		System.out.println("");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Fin del Programa");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("");
 		
 	}
 		

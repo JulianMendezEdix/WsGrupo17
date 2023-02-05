@@ -1,12 +1,14 @@
 /*
  ***********************************************************************************************
- * 
+ * 														INFO
+ ***********************************************************************************************
+ *
  * AD-5. Tarea en equipo. Interrelación entre clases.
  * Programación 1ºDAW EDIX 2023
  * GRUPO 17
  * Autores: Julián Méndez Podadera.
  * 
- **^*******************************************************************************************
+ ***********************************************************************************************
  * 
  * Descripcion:
  * Este es el Interface IntGestiónEmpresa propuesto en la actividad.
@@ -33,7 +35,7 @@ public interface IntGestionEmpresa {
 	boolean alta(Empleado empleado);
 	boolean eliminarUno(Empleado empleado);
 	boolean  modificarUno(Empleado empleado);
-	ArrayList<Empleado> buscarPorSexo();
+	ArrayList<Empleado> buscarPorSexo(char sexo);
 	Empleado buscarUno(int idEmpleado);
 	ArrayList<Empleado> buscarTodos();
 	double masaSalarial();

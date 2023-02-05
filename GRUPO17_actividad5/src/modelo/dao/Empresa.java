@@ -1,12 +1,14 @@
 /*
  ***********************************************************************************************
- * 
+ * 														INFO
+ ***********************************************************************************************
+ *
  * AD-5. Tarea en equipo. Interrelación entre clases.
  * Programación 1ºDAW EDIX 2023
  * GRUPO 17
  * Autores: Julián Méndez Podadera.
  * 
- **^*******************************************************************************************
+ ***********************************************************************************************
  * 
  * Descripcion:
  * Esta es la clase Empresa propuesta en la actividad.
@@ -73,7 +75,8 @@ public class Empresa implements IntGestionEmpresa  {
 	public boolean alta(Empleado empleado) {
 		/*
 		 * vamos a incluir un IF para que cualquier IdEmpleado sea único y no pueda estar 
-		 * repetido en la plantilla. Y usaremos el método add() de la clase ArrayList.
+		 * repetido en la plantilla utilizando el metodo contains. 
+		 * Y usaremos el método add() de la clase ArrayList para agregar el empleado.
 		 */	
 		if (plantilla.contains(empleado)) 
 			return false;
@@ -89,13 +92,13 @@ public class Empresa implements IntGestionEmpresa  {
 		return plantilla.remove(empleado);
 	}
 	
-	/*
-	 * Utilizaremos el indexOf tal y como vimos en clase para saber la posición en el el
-	 * arraylist del empleado. Y, si el empleado no está en el arraylist nos devolverá FALSE y 
-	 * no modificará nada, obviamente. Y, si el empleado está en el  
-	 */
 	@Override
 	public boolean modificarUno(Empleado empleado) {
+		/*
+		 * Utilizaremos el indexOf tal y como vimos en clase para saber la posición en el el
+		 * arraylist del empleado. Y, si el empleado no está en el arraylist nos devolverá FALSE y 
+		 * no modificará nada, obviamente. Y, si el empleado está en el array lo modificará.  
+		 */
 		int posicion = plantilla.indexOf(empleado);
 		if (posicion == -1)
 			return false;
@@ -105,18 +108,30 @@ public class Empresa implements IntGestionEmpresa  {
 	}
 
 	@Override
-	public ArrayList<Empleado> buscarPorSexo() {
-		return null;
+	public ArrayList<Empleado> buscarPorSexo(char sexo) {
+		/*
+		 * Seguimos los pasos que vimos en clase y utilzamos un arraylist auxiliar donde 
+		 * guardar los elementos que el bucle nos va a ir devolviendo. El bucle FOR mejorado 
+		 * va comparando cada campo Genero de cada empleado de la plantilla, con el 
+		 * parámetro sexo que le pasemos al método. Si el parámetro coincide, Pam!, 
+		 * se lo casca al nuevo array auxiliar.
+		 */
+		ArrayList<Empleado> aux =new ArrayList<>();
+		for (Empleado empleado: plantilla ) {
+			if (empleado.getGenero()==sexo )
+				aux.add(empleado);
+		}
+		return aux;
 	}
 
-	/*
-	 * Vamos a utilizar el truco de Tomás para evitar hacer un FOR en el buscarUno. 
-	 * Vamos a crear un empleado  con lo mínimo, con el campo clave. Y vamos a utilizar un 
-	 * indexOf para localizar la posición y una vez localizada utilizar el get para devolver
-	 * el empleado.
-	 */
 	@Override
 	public Empleado buscarUno(int idEmpleado) {
+		/*
+		 * Vamos a utilizar el truco de Tomás para evitar hacer un FOR en el buscarUno. 
+		 * Vamos a crear un empleado  con lo mínimo, con el campo clave. Y vamos a utilizar
+		 * un indexOf para localizar la posición y una vez localizada utilizar el get para 
+		 * devolver el empleado.
+		 */
 		Empleado emp = new Empleado();
 		emp.setIdEmpleado(idEmpleado);
 		int posicion = plantilla.indexOf(emp);
@@ -125,17 +140,6 @@ public class Empresa implements IntGestionEmpresa  {
 		else ; 
 			return plantilla.get(posicion);
 	}
-	
-	/*
-	 * Dejo la opcion con FOR por aquí para probarla.
-	 */		
-	/*@Override
-	public Empleado buscarUno(int idEmpleado) {
-		 for (Empleado ele: plantilla) {
-		 		if (ele.getIdEmpleado() == idEmpleado)
-		 			return ele;
-		  }
-		  */
 
 	@Override
 	public ArrayList<Empleado> buscarTodos() {
@@ -144,22 +148,77 @@ public class Empresa implements IntGestionEmpresa  {
 
 	@Override
 	public double masaSalarial() {
-		return 0;
-	}
-
-	@Override
-	public ArrayList<Empleado> buscarPorDepartamento(int idDepar) {
-		return null;
+		/*
+		 * Para la masa salarial hacemos un algoritmo que calcule la suma de las comisiones y 
+		 * los sueldos de todos los empleados utilizando un recorrido por el array con un FOR
+		 * mejorado y usando un par de acumuladores.
+		 */
+		double masaSalarial, salario=0, comision=0;
+		for (Empleado empleado: plantilla) {
+			salario+=empleado.getSalario();
+			comision+=empleado.getComision();
+		}
+		masaSalarial=salario+comision;
+		return masaSalarial;
 	}
 
 	@Override
 	public ArrayList<Empleado> buscarPorTrabajo(String idTrabajo) {
-		return null;
+		/*
+		 * Seguimos los pasos que vimos en clase y utilzamos un arraylist auxiliar donde 
+		 * guardar los elementos que el bucle nos va a ir devolviendo. El bucle FOR mejorado 
+		 * va comparando cada campo idTrabajo(un string que está dentro de la clase Trabajo) 
+		 * de cada empleado de la plantilla, con el parámetro idTrabajo que le pasemos al 
+		 * método. Si el parámetro coincide, sin importar las mayúsculas, Pam!, se lo casca 
+		 * al nuevo array auxiliar.
+		 * Por último, hemos añadido una mejora haciendo un If para que los nulos no los 
+		 * meta en el nuevo array, porque al hacerlo el metodo nos daba un 
+		 * Null PointerException.
+		 */
+		ArrayList<Empleado> aux =new ArrayList<>();
+		for (Empleado empleado: plantilla ) {
+			if (empleado.getTrabajo()==null)
+				System.out.println("Hay algún empleado sin trabajo asignado. "
+						+ "No se añadirá a los resultados");
+			else if (empleado.getTrabajo().getIdTrabajo().equalsIgnoreCase(idTrabajo))
+				aux.add(empleado);
+		}
+		return aux;
 	}
-
+	
+	@Override
+	public ArrayList<Empleado> buscarPorDepartamento (int idDepar) {
+		/*
+		 * Es prácticamente igual que buscarPorTrabajo así que copiamos y pegamos y
+		 * modificamos los campos.
+		 */
+		ArrayList<Empleado> aux =new ArrayList<>();
+		for (Empleado empleado: plantilla ) {
+			if (empleado.getDepartamento()==null)
+				System.out.println("Hay algún empleado sin Departamento asignado. "
+						+ "No se añadirá a los resultados.");
+			else if (empleado.getDepartamento().getIdDepar()== idDepar)
+				aux.add(empleado);
+			}
+		return aux;
+	}
+		
 	@Override
 	public ArrayList<Empleado> buscarPorPais(String pais) {
-		return null;
+		/*
+		 * Es prácticamente igual que buscarPorTrabajo así que copiamos y pegamos y
+		 * modificamos los campos.
+		 */
+		ArrayList<Empleado> aux =new ArrayList<>();
+		for (Empleado empleado: plantilla ) {
+			if (empleado.getDepartamento()==null)
+				System.out.println("Hay algún empleado sin departamento asignado. "
+						+ "No se añadirá a los resultados. Es probable que sea Almodóvar.");
+			else if (empleado.getDepartamento().getLocalidad().getPais().
+																										equalsIgnoreCase(pais))
+				aux.add(empleado);
+		}
+		return aux;
 	}
 	
 	/*
@@ -174,7 +233,7 @@ public class Empresa implements IntGestionEmpresa  {
 		
 		Localidad loc1 = new Localidad(100, "CALLE ALEGRIA, 2", "GRANADA", "ESPAÑA");
 		Localidad loc2 = new Localidad(200, "CALLE NEPTUNO, 10", "LOJA", "ESPAÑA");
-		Localidad loc3 = new Localidad(300, "CALLE LUNA, 20", "MADRID", "ESPAÑA");
+		Localidad loc3 = new Localidad(300, "CALLE LUNA, 20", "MADRID", "JAPON");
 		
 		// Creación de Departamentos 
 		
@@ -265,21 +324,17 @@ public class Empresa implements IntGestionEmpresa  {
 					(17, "MARIA", "PITA CHAMPOLION", 'M', 
 							"MARIAPITA@LOJASOUNDRECORDS.COM", 25000, 5000, tra3, dep5));
 	}
-
 	
 	/*
 	 * Método ToString Redefinido para comprobar el porqué de utilizar un FOR EACH para
 	 * imprimir los datos de un array list.
 	 */
-	
-	
+
 	@Override
 	public String toString() {
 		return "Empresa [nombre=" + nombre + ", plantilla=" + plantilla + "]";
 	}
 	
-
-
 }
 
 
