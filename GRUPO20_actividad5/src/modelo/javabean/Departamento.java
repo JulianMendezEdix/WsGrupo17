@@ -3,7 +3,7 @@
  * 
  * AD-5. Tarea en equipo. Interrelación entre clases.
  * Programación 1ºDAW EDIX 2023
- * GRUPO 17
+ * GRUPO 20
  * Autores: Julián Méndez Podadera.
  * 
  **^*******************************************************************************************
