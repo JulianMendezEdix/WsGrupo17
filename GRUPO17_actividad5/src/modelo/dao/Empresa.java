@@ -1,17 +1,47 @@
-package modelo.dao;
+/*
+ ***********************************************************************************************
+ * 
+ * AD-5. Tarea en equipo. Interrelación entre clases.
+ * Programación 1ºDAW EDIX 2023
+ * GRUPO 17
+ * Autores: Julián Méndez Podadera.
+ * 
+ **^*******************************************************************************************
+ * 
+ * Descripcion:
+ * Esta es la clase Empresa propuesta en la actividad.
+ * 
+ ***********************************************************************************************
+ * 
+ * NOTAS: 
+ * los demás compañeros del grupo no han aparecido tras intentos continuados 
+ * de contacto vía mensaje en el campus de EDIX. Aporto capturas de pantalla en carpeta
+ * "Documentación".
+ * 
+ ***********************************************************************************************
+ */
 
+package modelo.dao;
 import java.util.ArrayList;
 import modelo.javabean.*;
 
+/*
+ * 1. Creamos la Clase Empresa. 
+ */
+
 public class Empresa implements IntGestionEmpresa  {
 	
-	// Atributos de objeto privados
+	/*
+	 * 2. Atributos de objeto privados:
+	 * datos privados del diagrama de la actividad.
+	 */
 	
 	private String nombre;
 	private ArrayList<Empleado> plantilla;
 	
-	/* Método Constructor requerido (con un parámetro tipo String
-	 *con nombreEmpresa, y en él hacer el new ArrayList)
+	/* 3. Método Constructor requerido:
+	 * Un constructor con un parámetro tipo String con nombreEmpresa, 
+	 * y en él hacer el new ArrayList.
 	 */
 	
 	public Empresa (String nombreEmpresa) {
@@ -22,17 +52,121 @@ public class Empresa implements IntGestionEmpresa  {
 		
 	}
 
-	
-	// Getter and Setter requeridos (Sólo de de nombre)
+	/*
+	 * 4. Getter and Setter requeridos:
+	 * geter an settr SOLO de nombre.
+	 */
 	
 	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String nombreEmpresa) {
+		this.nombre = nombreEmpresa;
 	}
 	
-	// Métodos privados
+	/*
+	 * 5. Métodos de implementación de Interface:
+	 *  Implementación de los métodos del interface y del contenido de cada uno de ellos.
+	 */
+	
+	@Override
+	public boolean alta(Empleado empleado) {
+		/*
+		 * vamos a incluir un IF para que cualquier IdEmpleado sea único y no pueda estar 
+		 * repetido en la plantilla. Y usaremos el método add() de la clase ArrayList.
+		 */	
+		if (plantilla.contains(empleado)) 
+			return false;
+		else
+			return plantilla.add(empleado);	
+	}
+
+	@Override
+	public boolean eliminarUno(Empleado empleado) {
+		/*
+		 * Usaremos el método remove de la clase ArrayList.
+		 */
+		return plantilla.remove(empleado);
+	}
+	
+	/*
+	 * Utilizaremos el indexOf tal y como vimos en clase para saber la posición en el el
+	 * arraylist del empleado. Y, si el empleado no está en el arraylist nos devolverá FALSE y 
+	 * no modificará nada, obviamente. Y, si el empleado está en el  
+	 */
+	@Override
+	public boolean modificarUno(Empleado empleado) {
+		int posicion = plantilla.indexOf(empleado);
+		if (posicion == -1)
+			return false;
+		else 
+			System.out.println("Empleado modificado: " +plantilla.set(posicion, empleado)); 
+			return true;
+	}
+
+	@Override
+	public ArrayList<Empleado> buscarPorSexo() {
+		return null;
+	}
+
+	/*
+	 * Vamos a utilizar el truco de Tomás para evitar hacer un FOR en el buscarUno. 
+	 * Vamos a crear un empleado  con lo mínimo, con el campo clave. Y vamos a utilizar un 
+	 * indexOf para localizar la posición y una vez localizada utilizar el get para devolver
+	 * el empleado.
+	 */
+	@Override
+	public Empleado buscarUno(int idEmpleado) {
+		Empleado emp = new Empleado();
+		emp.setIdEmpleado(idEmpleado);
+		int posicion = plantilla.indexOf(emp);
+		if (posicion == -1)
+			return null;
+		else ; 
+			return plantilla.get(posicion);
+	}
+	
+	/*
+	 * Dejo la opcion con FOR por aquí para probarla.
+	 */		
+	/*@Override
+	public Empleado buscarUno(int idEmpleado) {
+		 for (Empleado ele: plantilla) {
+		 		if (ele.getIdEmpleado() == idEmpleado)
+		 			return ele;
+		  }
+		  */
+
+	@Override
+	public ArrayList<Empleado> buscarTodos() {
+		return plantilla ;
+	}
+
+	@Override
+	public double masaSalarial() {
+		return 0;
+	}
+
+	@Override
+	public ArrayList<Empleado> buscarPorDepartamento(int idDepar) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<Empleado> buscarPorTrabajo(String idTrabajo) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<Empleado> buscarPorPais(String pais) {
+		return null;
+	}
+	
+	/*
+	 * 6. Métodos privados requeridos:
+	 * Crear un método privado cargarDatos(): void. En donde creamos Empleados para 
+	 * probar, de distintos trabajos, departamentos con sus localidades.
+	 */
 	
 	private void cargarDatos() {
 		
@@ -132,75 +266,20 @@ public class Empresa implements IntGestionEmpresa  {
 							"MARIAPITA@LOJASOUNDRECORDS.COM", 25000, 5000, tra3, dep5));
 	}
 
-
 	
-	// Métodos de implementación de Interface
+	/*
+	 * Método ToString Redefinido para comprobar el porqué de utilizar un FOR EACH para
+	 * imprimir los datos de un array list.
+	 */
+	
 	
 	@Override
-	public boolean altaEmpleado(Empleado empleado) {
-		// vamos a incluir un IF para que cualquier IdEmpleado sea único 
-		// y no pueda estar repetido
-		
-		if (plantilla.contains(empleado)) 
-			return false;
-		else
-			return plantilla.add(empleado);	
+	public String toString() {
+		return "Empresa [nombre=" + nombre + ", plantilla=" + plantilla + "]";
 	}
 	
 
 
-	@Override
-	public boolean eliminarUno(Empleado empleado) {
-		return plantilla.remove(empleado);
-	}
-	
-
-
-	@Override
-	public boolean modificarUno(Empleado empleado) {
-		return false;
-	}
-
-
-	@Override
-	public ArrayList<Empleado> buscarPorSexo() {
-		return null;
-	}
-
-
-	@Override
-	public Empleado buscarUno(int IdEmpleado) {
-		return null;
-	}
-
-
-	@Override
-	public ArrayList<Empleado> buscarTodos() {
-		return plantilla ;
-	}
-
-
-	@Override
-	public double masaSalarial() {
-		return 0;
-	}
-
-
-	@Override
-	public ArrayList<Empleado> buscarPorDepartamento(int idDepar) {
-		return null;
-	}
-
-
-	@Override
-	public ArrayList<Empleado> buscarPorTrabajo(String idTrabajo) {
-		return null;
-	}
-
-
-	@Override
-	public ArrayList<Empleado> buscarPorPais(String pais) {
-		return null;
-	}
-	
 }
+
+

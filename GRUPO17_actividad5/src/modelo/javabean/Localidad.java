@@ -1,3 +1,26 @@
+/*
+ ***********************************************************************************************
+ * 
+ * AD-5. Tarea en equipo. Interrelación entre clases.
+ * Programación 1ºDAW EDIX 2023
+ * GRUPO 17
+ * Autores: Julián Méndez Podadera.
+ * 
+ **^*******************************************************************************************
+ * 
+ * Descripcion:
+ * Esta es la clase Localidad propuesta en la actividad.
+ * 
+ ***********************************************************************************************
+ * 
+ * NOTAS: 
+ * los demás compañeros del grupo no han aparecido tras intentos continuados 
+ * de contacto vía mensaje en el campus de EDIX. Aporto capturas de pantalla en carpeta
+ * "Documentación".
+ * 
+ ***********************************************************************************************
+ */
+
 package modelo.javabean;
 
 import java.util.Objects;
