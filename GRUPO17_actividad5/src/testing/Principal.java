@@ -225,7 +225,7 @@ public class Principal {
 		 * Y volvemos a probar a ejecutar el metodo modificarUno, ahora con un empleado
 		 * que sí existe.:
 		 */
-		System.out.println("\nModificando el primer apellido de Perdor Almodóvar  Id=100 "
+		System.out.println("\nModificando el primer apellido de Pedro Almodóvar  Id=100 "
 				+ "tras su alta en plantilla:");
 		System.out.println(miEmpresa.modificarUno(empMod));
 		/*
@@ -282,6 +282,7 @@ public class Principal {
 		 *  								6. TEST METODO BUSCAR UNO
 		 ******************************************************************************************  
 		 */
+		System.out.println("");
 		System.out.println("-------------------------------------------------------------------");
 		System.out.println("6. TEST METODO BUSCAR UNO");
 		System.out.println("-------------------------------------------------------------------");
@@ -427,7 +428,7 @@ public class Principal {
 		 * Llamamos al método masa salarial.
 		 */
 		System.out.println("\nLa masa salarial de la empresa (salarios más comisiones) es: ");
-		System.out.println(miEmpresa.masaSalarial()+ "Eurazos");
+		System.out.println(miEmpresa.masaSalarial()+ " Eurazos");
 		/*
 		 * Funciona Prefectamente.
 		 * Despidamos a Pedro Almogavers y chequeemos cambios
@@ -435,7 +436,7 @@ public class Principal {
 		System.out.println("\nBaja de Pedro Almogavers:\n" + 
 				miEmpresa.eliminarUno(empMod));
 		System.out.println("\nLa masa salarial de la empresa (salarios más comisiones) es: ");
-		System.out.println(miEmpresa.masaSalarial()+ "Eurazos");
+		System.out.println(miEmpresa.masaSalarial()+ " Eurazos");
 		/*
 		 * Vemos que sin Pedro Almogavers la masa salarial baja en 30000 euros, que es el 
 		 * resultado de la suma del sueldo y de las comisiones que cobraba Almogavers.
@@ -448,18 +449,10 @@ public class Principal {
 		System.out.println("");
 		System.out.println("-------------------------------------------------------------------");
 		System.out.println("-------------------------------------------------------------------");
-		System.out.println("FIN DEL PROGRAMA. ciao!");
+		System.out.println("**FIN DEL PROGRAMA. ciao!");
 		System.out.println("-------------------------------------------------------------------");
 		System.out.println("-------------------------------------------------------------------");
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	}
 		
 	/*

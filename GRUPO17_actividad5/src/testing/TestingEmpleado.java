@@ -60,10 +60,10 @@ public class TestingEmpleado {
 		Localidad loc1 = new Localidad(100, "CALLE DOLORES, 2", "GRANADA", "ESPAÑA");
 		Departamento dep1 = new Departamento(1, "EDITORIAL", loc1);
 		Trabajo tra1 = new Trabajo
-										   ("DIRECCION", "MÁXIMA RESPONSABILIDAD DEPARTAMENTO", 
+										   ("DIRECCION", "MAXIMA RESPONSABILIDAD DEPARTAMENTO", 
 										   50000, 80000);
 		Empleado emp1 = new Empleado 
-												   (6, "JULIÁN", "MÉNDEZ PODADERA", 'H', 
+												   (6, "JULIAN", "MENDEZ PODADERA", 'H', 
 						                           "JMENDEZPOD@GMAIL.COM", 60000, 10000, tra1, dep1);
 		
 		/*
@@ -108,7 +108,7 @@ public class TestingEmpleado {
 		
 		System.out.println("");
 		System.out.println("-------------------------------------------------------------------");
-		System.out.println("Fin del Programa");
+		System.out.println("**FIN DEL PROGRAMA. Agur!");
 		System.out.println("-------------------------------------------------------------------");
 		System.out.println("");
 		
