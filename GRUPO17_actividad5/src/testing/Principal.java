@@ -11,7 +11,7 @@
  * Descripcion:
  * Esta es la clase Principal con main static, correspondiente al último punto de la práctica. 
  * En ella, realizamos una prueba en secuencia, mostrando cada información que sale 
- * de la prueba de cada uno de los 10 métodos propuestos  de la gestión de la Empresa.
+ * de la prueba de cada uno de los 10 métodos propuestos de la gestión de la Empresa.
  * 
  * *********************************************************************************************
  * 
@@ -250,7 +250,15 @@ public class Principal {
 		
 		/*
 		 ******************************************************************************************
-		 *  								4. TEST METODO BUSCAR UNO
+		 *  								4. TEST METODO BUSCAR POR SEXO
+		 ******************************************************************************************  
+		 */
+		
+
+		
+		/*
+		 ******************************************************************************************
+		 *  								5. TEST METODO BUSCAR UNO
 		 ******************************************************************************************  
 		 */
 		
@@ -271,30 +279,8 @@ public class Principal {
 		System.out.println(miEmpresa.buscarUno(200));
 		/*
 		 * Nos da como resultado null. No ha encontrado nada.
-		 */
-		
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
+		 */		
 	}
-	
-	
-	/*
-	 ******************************************************************************************
-	 *  								4. TEST METODO BUSCAR POR SEXO
-	 ******************************************************************************************  
-	 */
-	
-
-	
 
 	/*
 	 * Métodos Privados
